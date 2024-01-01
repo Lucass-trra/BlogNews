@@ -1,0 +1,14 @@
+div#principal-title-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    h1 {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        text-transform: capitalize;
+        font-size: 5rem;
+    }
+
+    span {
+        color: crimson;
+    }
+}

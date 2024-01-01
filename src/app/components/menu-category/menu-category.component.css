@@ -1,0 +1,33 @@
+div#menu-category-container {
+    display: flex;
+    justify-content: space-around;
+
+    ul {
+        display: flex;
+        gap: 1rem;
+        list-style: none;
+
+    }
+
+    li a:hover {
+        color: var(--color_red_default);
+        transition: .2s ease-in-out;
+        
+    }
+    
+    label {
+        display: flex;
+        cursor: pointer;
+
+        input {
+            padding: .4rem;
+            width: 70%;
+            border: none;
+            outline: none;
+        }
+    
+        img {
+            scale: .7;
+        }
+    }
+}

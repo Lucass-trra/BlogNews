@@ -1,0 +1,22 @@
+section.news {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    
+    div#big-card-separation {
+        width: 40%;
+    }
+    
+    div#small-cards-separation {
+        width: 40%;
+        display: flex;
+        justify-content: flex-end;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+
+        app-small-card {
+            width: 45%;
+            height: 33%;
+        }
+    }
+}

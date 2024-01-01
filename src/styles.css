@@ -1,0 +1,16 @@
+:root {
+    --color_black_default: #161616;
+    --color_white_default: #fff7ff;
+    --color_gray_default: #7a7a7a;
+    --color_red_default: crimson;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--color_white_default);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    color: var(--color_black_default);
+}

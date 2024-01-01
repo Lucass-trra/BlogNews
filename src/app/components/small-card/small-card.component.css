@@ -1,0 +1,19 @@
+div#small-card-container {
+    display: flex;
+
+    a {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+
+    img {
+        border-radius: .5rem;
+        width: 100%;
+        min-width: 100%;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+}
