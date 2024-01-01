@@ -1,4 +1,4 @@
-div#big-card-container {
+article#big-card-container {
     display: flex;
     gap: 0.7rem;
     flex-direction: column; 
