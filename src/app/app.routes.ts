@@ -9,7 +9,7 @@ export const routes: Routes = [
     },
 
     {
-        path: "contentDetail",
+        path: "contentDetail/:id",
         component: ContentDetailsComponent
     }
 ];
