@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-menu-category',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './menu-category.component.html',
   styleUrl: './menu-category.component.css'
 })

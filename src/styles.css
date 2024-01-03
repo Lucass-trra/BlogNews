@@ -13,4 +13,43 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-decoration: none;
     color: var(--color_black_default);
+}   
+
+
+header {
+    hr {
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    
+    hr#upper-line {
+        margin-bottom: 2rem;
+    }
+    
+    hr#lower-line {
+        margin-top: 1rem;
+    }    
+}
+
+main {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    
+    div#big-card-separation {
+        width: 40%;
+    }
+    
+    div#small-cards-separation {
+        width: 40%;
+        display: flex;
+        justify-content: flex-end;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+
+        app-small-card {
+            width: 45%;
+            height: 33%;
+        }
+    }
 }
