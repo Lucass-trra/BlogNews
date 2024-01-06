@@ -6,16 +6,65 @@
     <app-title firstTitle="techn" secondTitle="ology"></app-title>
 </header>
 
+
 <main class="news">
     <div id="big-card-separation">
-        <app-big-card id="0"></app-big-card>
+        <app-big-card
+            [bigCardInformations]="{
+                img: articlesVectortechnology[0].urlToImage ,
+                category:category,
+                publishedAt: articlesVectortechnology[0].publishedAt,
+                title: articlesVectortechnology[0].title,
+                description: articlesVectortechnology[0].description
+            }"
+        >
+        </app-big-card>
     </div>
 
-    <div id="small-cards-separation">
-        <app-small-card id="1"></app-small-card>
-        <app-small-card id="2"></app-small-card>
-        <app-small-card id="3"></app-small-card>
-        <app-small-card id="4"></app-small-card>
-    </div>
+    <aside id="small-cards-separation">
+      
+        <app-small-card
+        [smallCardInformations] ="{
+            title: articlesVectortechnology[1].title, 
+            img: articlesVectortechnology[1].urlToImage
+        }"
+        >
+        </app-small-card>
+        
+
+        <app-small-card 
+        [smallCardInformations] ="{
+            title: articlesVectortechnology[2].title, 
+            img: articlesVectortechnology[2].urlToImage
+        }"
+        >
+        </app-small-card>
+
+        <app-small-card 
+        [smallCardInformations] ="{
+            title: articlesVectortechnology[3].title, 
+            img: articlesVectortechnology[3].urlToImage 
+        }"
+        >
+        </app-small-card>
+
+        <app-small-card 
+        [smallCardInformations] ="{
+            title: articlesVectortechnology[4].title, 
+            img: articlesVectortechnology[4].urlToImage
+        }"
+        >
+        </app-small-card>
+    </aside>
 </main>
+
+<section id="rest-smallCard-separation">
+    <app-small-card *ngFor="let article of articlesVectortechnology.slice(5); let i = index"
+    [smallCardInformations] ="{
+        title: articlesVectortechnology[i + 5].title, 
+        img: articlesVectortechnology[i + 5].urlToImage
+    }"
+    >
+    </app-small-card>
+</section>
 

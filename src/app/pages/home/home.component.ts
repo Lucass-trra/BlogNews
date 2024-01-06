@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 //components 
 import { ComponentsModule } from "../../components/components.module";
+
 //service
 import { PagesService } from '../../services/Pages.service';
 //types
@@ -40,7 +41,7 @@ export class HomeComponent extends GlobalFunctions implements OnInit {
       }
     }
 
-    console.log(this.articlesVectorHome)
+    // console.log(this.articlesVectorHome)
   }
   
   ngOnInit(): void {

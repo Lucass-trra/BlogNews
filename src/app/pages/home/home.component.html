@@ -6,11 +6,12 @@
     <app-title firstTitle="blog" secondTitle="news"></app-title>
 </header>
 
+
 <main class="news">
     <div id="big-card-separation">
         <app-big-card
             [bigCardInformations]="{
-                img: articlesVectorHome[0].urlToImage,
+                img: articlesVectorHome[0].urlToImage ,
                 category:category,
                 publishedAt: articlesVectorHome[0].publishedAt,
                 title: articlesVectorHome[0].title,
@@ -66,3 +67,4 @@
     >
     </app-small-card>
 </section>
+

@@ -6,15 +6,65 @@
     <app-title firstTitle="spo" secondTitle="rts"></app-title>
 </header>
 
+
 <main class="news">
     <div id="big-card-separation">
-        <app-big-card id="0"></app-big-card>
+        <app-big-card
+            [bigCardInformations]="{
+                img: articlesVectorSports[0].urlToImage ,
+                category:category,
+                publishedAt: articlesVectorSports[0].publishedAt,
+                title: articlesVectorSports[0].title,
+                description: articlesVectorSports[0].description
+            }"
+        >
+        </app-big-card>
     </div>
 
-    <div id="small-cards-separation">
-        <app-small-card id="1"></app-small-card>
-        <app-small-card id="2"></app-small-card>
-        <app-small-card id="3"></app-small-card>
-        <app-small-card id="4"></app-small-card>
-    </div>
+    <aside id="small-cards-separation">
+      
+        <app-small-card
+        [smallCardInformations] ="{
+            title: articlesVectorSports[1].title, 
+            img: articlesVectorSports[1].urlToImage
+        }"
+        >
+        </app-small-card>
+        
+
+        <app-small-card 
+        [smallCardInformations] ="{
+            title: articlesVectorSports[2].title, 
+            img: articlesVectorSports[2].urlToImage
+        }"
+        >
+        </app-small-card>
+
+        <app-small-card 
+        [smallCardInformations] ="{
+            title: articlesVectorSports[3].title, 
+            img: articlesVectorSports[3].urlToImage 
+        }"
+        >
+        </app-small-card>
+
+        <app-small-card 
+        [smallCardInformations] ="{
+            title: articlesVectorSports[4].title, 
+            img: articlesVectorSports[4].urlToImage
+        }"
+        >
+        </app-small-card>
+    </aside>
 </main>
+
+<section id="rest-smallCard-separation">
+    <app-small-card *ngFor="let article of articlesVectorSports.slice(5); let i = index"
+    [smallCardInformations] ="{
+        title: articlesVectorSports[i + 5].title, 
+        img: articlesVectorSports[i + 5].urlToImage
+    }"
+    >
+    </app-small-card>
+</section>
+
