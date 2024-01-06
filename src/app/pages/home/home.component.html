@@ -8,13 +8,61 @@
 
 <main class="news">
     <div id="big-card-separation">
-        <app-big-card></app-big-card>
+        <app-big-card
+            [bigCardInformations]="{
+                img: articlesVectorHome[0].urlToImage,
+                category:category,
+                publishedAt: articlesVectorHome[0].publishedAt,
+                title: articlesVectorHome[0].title,
+                description: articlesVectorHome[0].description
+            }"
+        >
+        </app-big-card>
     </div>
 
-    <div id="small-cards-separation">
-        <app-small-card ></app-small-card>
-        <app-small-card ></app-small-card>
-        <app-small-card ></app-small-card>
-        <app-small-card ></app-small-card>
-    </div>
+    <aside id="small-cards-separation">
+      
+        <app-small-card
+        [smallCardInformations] ="{
+            title: articlesVectorHome[1].title, 
+            img: articlesVectorHome[1].urlToImage
+        }"
+        >
+        </app-small-card>
+        
+
+        <app-small-card 
+        [smallCardInformations] ="{
+            title: articlesVectorHome[2].title, 
+            img: articlesVectorHome[2].urlToImage
+        }"
+        >
+        </app-small-card>
+
+        <app-small-card 
+        [smallCardInformations] ="{
+            title: articlesVectorHome[3].title, 
+            img: articlesVectorHome[3].urlToImage 
+        }"
+        >
+        </app-small-card>
+
+        <app-small-card 
+        [smallCardInformations] ="{
+            title: articlesVectorHome[4].title, 
+            img: articlesVectorHome[4].urlToImage
+        }"
+        >
+        </app-small-card>
+    </aside>
 </main>
+
+<section id="rest-smallCard-separation">
+    <app-small-card *ngFor="let article of articlesVectorHome.slice(5); let i = index"
+    [smallCardInformations] ="{
+        title: articlesVectorHome[i + 5].title, 
+        img: articlesVectorHome[i + 5].urlToImage
+    }"
+    >
+    </app-small-card>
+</section>

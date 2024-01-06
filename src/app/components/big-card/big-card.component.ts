@@ -3,6 +3,9 @@ import { RouterModule } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
 
+//types
+import { BigCard } from "../../../types";
+
 @Component({
   selector: 'app-big-card',
   standalone: true,
@@ -11,11 +14,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './big-card.component.css'
 })
 export class BigCardComponent {
-  @Input() id:number | string = 0
-  @Input() img:string = ""
-  @Input() category:string = ""
-  @Input() publishedAt:string = ""
-  @Input() title:string = ""
-  @Input() description:string = ""
+  @Input() bigCardInformations:BigCard = {
+    img: '',
+    category: '',
+    publishedAt: '',
+    title: '',
+    description: ''
+  }
 
 }

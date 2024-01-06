@@ -40,7 +40,7 @@ main {
         width: 40%;
     }
     
-    div#small-cards-separation {
+    aside#small-cards-separation {
         width: 40%;
         display: flex;
         justify-content: flex-end;
@@ -52,4 +52,18 @@ main {
             height: 33%;
         }
     }
+}
+
+section#rest-smallCard-separation {
+    display: flex;
+    gap: 2rem;
+    width: 100vw;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+
+    app-small-card {
+        width: 20%;
+    }
+
 }

@@ -12,8 +12,20 @@ export type Article = {
     urlToImage:string
 }
 
+export type BigCard = {
+    img:string
+    category:string
+    publishedAt:string
+    title:string
+    description:string
+}
+
+export type SmallCard = {
+    img: string
+    title: string
+}
 export type ApiResponse = {
-    articles: Article[]
+    articles: Article[] 
     status: string
     totalResults: number
 }

@@ -1,6 +1,9 @@
 <article id="small-card-container">
-    <a [routerLink]="['contentDetail', id]">
-        <img src="https://picsum.photos/id/1076/300/150" alt="">
-        <h2>A new building was build</h2>
+    <a [routerLink]="['contentDetail', smallCardInformations.title]">
+        <div id="image-container">
+            <img [srcset]="smallCardInformations.img" alt="small card image">
+        </div>
+      
+        <h2>{{smallCardInformations.title}}</h2>
     </a>
 </article>

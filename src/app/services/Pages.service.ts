@@ -5,10 +5,9 @@ import { environment } from '../../environments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
-export class HomeService {
+export class PagesService {
   
   constructor() { }
-
 
   async getHomeNews(): Promise<any> {
     // debugger;

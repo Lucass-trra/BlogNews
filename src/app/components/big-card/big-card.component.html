@@ -1,16 +1,16 @@
 <article id="big-card-container">
-    <a [routerLink]="['contentDedail', id]">
-        <img src="https://picsum.photos/id/598/600/400" alt="">
+    <a [routerLink]="['contentDedail',bigCardInformations.title]">
+        <img srcset="{{bigCardInformations.img}}">
     </a>
-
+    
     <div id="dateAndCategory-container">
-        <span id="category">Security</span>
-        <span id="publishedAt">2020-09-22</span>
+        <span id="category">{{bigCardInformations.category}}</span>
+        <span id="publishedAt">{{bigCardInformations.publishedAt}}</span>
     </div>
 
-    <a [routerLink]="['contentDedail', id]">
-        <h2>New boat was found</h2>
+    <a [routerLink]="['contentDedail', bigCardInformations.title]">
+        <h2>{{bigCardInformations.title}}</h2>
     </a>
 
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam nam doloribus eveniet ipsa impedit fuga tempore iusto quisquam sequi quia?</p>
+    <p>{{bigCardInformations.description}}</p>
 </article>

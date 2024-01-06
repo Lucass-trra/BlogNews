@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 //components 
 import { ComponentsModule } from "../../components/components.module";
 //service
-import { HomeService } from '../../services/home.service';
+import { PagesService } from '../../services/Pages.service';
 //types
-import { Article,ApiResponse } from "../../../types";
+import { Article, ApiResponse} from "../../../types";
+import { GlobalFunctions } from '../../../GlobalFunctions';
 
 @Component({
   selector: 'app-home',
@@ -16,26 +17,33 @@ import { Article,ApiResponse } from "../../../types";
   styleUrls: ['./home.component.css']
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent extends GlobalFunctions implements OnInit {
+  category:string = "general"
+  articlesVectorHome: Article[] = []
 
-  articlesVectorHome:Article[] = []
-  
-  constructor(private dataHome: HomeService) {}
-
-  async showHomeInformations() {
-    try {
-      const homeNews:ApiResponse = await this.dataHome.getHomeNews();
-
-      for (const article of homeNews.articles) {
-        this.articlesVectorHome.push(article) 
-      }
-
-    } catch (error) {
-      console.error('Erro ao obter notícias da API:', error);
-    }
+  constructor(private pagesService:PagesService) {
+    super();
   }
 
+  async getHomeNews():Promise<void> {
+    const newsHome:ApiResponse = await this.pagesService.getHomeNews();
+
+    for (const articleHome of newsHome.articles) {
+      let articleValidatedHome:Article = this.fillNullNewsInformations(articleHome)
+
+      articleValidatedHome.publishedAt = this.formatDateFromNotice(articleValidatedHome.publishedAt)
+
+      articleValidatedHome.title = this.reducedTitle(articleValidatedHome.title)
+
+      if (this.isEmptyNews(articleValidatedHome)) {
+        this.articlesVectorHome.push(articleValidatedHome) 
+      }
+    }
+
+    console.log(this.articlesVectorHome)
+  }
+  
   ngOnInit(): void {
-    this.showHomeInformations();
+    this.getHomeNews();
   }
 }
