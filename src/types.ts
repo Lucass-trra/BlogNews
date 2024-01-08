@@ -23,9 +23,21 @@ export type BigCard = {
 export type SmallCard = {
     img: string
     title: string
+    category:string
 }
 export type ApiResponse = {
     articles: Article[] 
     status: string
     totalResults: number
 }
+
+export type pageUrlGroup = {
+    home: string,
+    business: string,
+    entertainment: string,
+    health: string,
+    science: string,
+    sports: string,
+    technology: string,
+}
+

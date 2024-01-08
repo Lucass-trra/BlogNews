@@ -1,5 +1,6 @@
 import { PagesService } from "./app/services/Pages.service";
-import { ApiResponse, Article} from "./types";
+import { apiKey, environment } from "./environments/environment.development";
+import { ApiResponse, Article, pageUrlGroup} from "./types";
 
 export abstract class  GlobalFunctions {
     constructor(
@@ -7,14 +8,14 @@ export abstract class  GlobalFunctions {
       ) 
     {}
   protected fillNullNewsInformations(article: Article): Article {
-    const author = article.author !== null ? article.author : "default author";
+    const author = article.author !== null ? article.author : "unknown author";
     const content = article.content !== null ? article.content : "default content";
     const description = article.description !== null ? article.description : "default description";
     const publishedAt = article.publishedAt !== null ? article.publishedAt : "default date";
-    const sourceId = article.source.id !== null ? article.source.id : "default Id";
+    const sourceId = article.source.id !== null ? article.source.id : "unknown Id";
     const sourceName = article.source.name !== null ? article.source.name : "default Name";
-    const title = article.title !== "[Removed]" ? article.title : "default title";
-    const url = article.url !== null ? article.url : "default url";
+    const title = article.title !== "[Removed]" ? article.title : "unknown title";
+    const url = article.url !== null ? article.url : "unknown url";
     const img = article.urlToImage !== null ? article.urlToImage : "https://www.eclosio.ong/wp-content/uploads/2018/08/default.png";
   
     article.author = author;
@@ -36,7 +37,7 @@ export abstract class  GlobalFunctions {
   }
 
   protected reducedTitle(title:string):string {
-    return `${title.substring(0, 50)}...` 
+    return `${title.substring(0, 50)}` 
   }
 
   protected isEmptyNews(article: Article): boolean {
@@ -49,8 +50,18 @@ export abstract class  GlobalFunctions {
       return true;
     }
   }
-  
 
-
-
+  protected getNoticeUrlByIdAndCategory(category:string,id:string):string {
+    const noticeDetailsUrl: pageUrlGroup = {
+      home: `${environment.homeUrl}&apiKey=${apiKey}&q=${id}`,
+      business: `${environment.businessUlr}&apiKey=${apiKey}&q=${id}`,
+      entertainment: `${environment.entertainmentUrl}&apiKey=${apiKey}&q=${id}`,
+      health: `${environment.healthUrl}&apiKey=${apiKey}&q=${id}`,
+      science: `${environment.scienceUrl}&apiKey=${apiKey}&q=${id}`,
+      sports: `${environment.sportsUrl}&apiKey=${apiKey}&q=${id}`,
+      technology: `${environment.technologyUrl}&apiKey=${apiKey}&q=${id}`,
+    }
+    
+    return noticeDetailsUrl[category as keyof typeof noticeDetailsUrl];
+  }
 }

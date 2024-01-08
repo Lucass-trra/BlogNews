@@ -11,7 +11,7 @@
     <div id="big-card-separation">
         <app-big-card
             [bigCardInformations]="{
-                img: articlesVectorHome[0].urlToImage ,
+                img: articlesVectorHome[0].urlToImage,
                 category:category,
                 publishedAt: articlesVectorHome[0].publishedAt,
                 title: articlesVectorHome[0].title,
@@ -26,7 +26,8 @@
         <app-small-card
         [smallCardInformations] ="{
             title: articlesVectorHome[1].title, 
-            img: articlesVectorHome[1].urlToImage
+            img: articlesVectorHome[1].urlToImage,
+            category: category
         }"
         >
         </app-small-card>
@@ -35,7 +36,8 @@
         <app-small-card 
         [smallCardInformations] ="{
             title: articlesVectorHome[2].title, 
-            img: articlesVectorHome[2].urlToImage
+            img: articlesVectorHome[2].urlToImage,
+            category: category
         }"
         >
         </app-small-card>
@@ -43,7 +45,8 @@
         <app-small-card 
         [smallCardInformations] ="{
             title: articlesVectorHome[3].title, 
-            img: articlesVectorHome[3].urlToImage 
+            img: articlesVectorHome[3].urlToImage,
+            category: category
         }"
         >
         </app-small-card>
@@ -51,7 +54,8 @@
         <app-small-card 
         [smallCardInformations] ="{
             title: articlesVectorHome[4].title, 
-            img: articlesVectorHome[4].urlToImage
+            img: articlesVectorHome[4].urlToImage,
+            category: category
         }"
         >
         </app-small-card>
@@ -62,7 +66,8 @@
     <app-small-card *ngFor="let article of articlesVectorHome.slice(5); let i = index"
     [smallCardInformations] ="{
         title: articlesVectorHome[i + 5].title, 
-        img: articlesVectorHome[i + 5].urlToImage
+        img: articlesVectorHome[i + 5].urlToImage,
+        category: category
     }"
     >
     </app-small-card>

@@ -1,5 +1,5 @@
 <article id="small-card-container">
-    <a [routerLink]="['contentDetail', smallCardInformations.title]">
+    <a [routerLink]="['contentDetail', smallCardInformations.title, smallCardInformations.category]">
         <div id="image-container">
             <img [srcset]="smallCardInformations.img" alt="small card image">
         </div>

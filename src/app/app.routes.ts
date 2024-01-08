@@ -52,8 +52,44 @@ export const routes: Routes = [
         component: TechnologyComponent
     },
 
+    // routes for content details
     {
-        path: "contentDetail/:id",
+        path: "contentDetail/:id/:category",
         component: ContentDetailsComponent
-    }
+    },
+
+    {
+        path: "business/contentDetail/:id/:category",
+        component: ContentDetailsComponent
+    },
+
+
+    {
+        path: "entertainment/contentDetail/:id/:category",
+        component: ContentDetailsComponent
+    },
+
+
+    {
+        path: "health/contentDetail/:id/:category",
+        component: ContentDetailsComponent
+    },
+
+
+    {
+        path: "science/contentDetail/:id/:category",
+        component: ContentDetailsComponent
+    },
+
+
+    {
+        path: "sports/contentDetail/:id/:category",
+        component: ContentDetailsComponent
+    },
+
+
+    {
+        path: "technology/contentDetail/:id/:category",
+        component: ContentDetailsComponent
+    },
 ];

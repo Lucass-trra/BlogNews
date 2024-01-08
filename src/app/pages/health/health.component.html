@@ -26,7 +26,8 @@
         <app-small-card
         [smallCardInformations] ="{
             title: articlesVectorHealth[1].title, 
-            img: articlesVectorHealth[1].urlToImage
+            img: articlesVectorHealth[1].urlToImage,
+            category: category
         }"
         >
         </app-small-card>
@@ -35,7 +36,8 @@
         <app-small-card 
         [smallCardInformations] ="{
             title: articlesVectorHealth[2].title, 
-            img: articlesVectorHealth[2].urlToImage
+            img: articlesVectorHealth[2].urlToImage,
+            category: category
         }"
         >
         </app-small-card>
@@ -43,7 +45,8 @@
         <app-small-card 
         [smallCardInformations] ="{
             title: articlesVectorHealth[3].title, 
-            img: articlesVectorHealth[3].urlToImage 
+            img: articlesVectorHealth[3].urlToImage,
+            category: category
         }"
         >
         </app-small-card>
@@ -51,7 +54,8 @@
         <app-small-card 
         [smallCardInformations] ="{
             title: articlesVectorHealth[4].title, 
-            img: articlesVectorHealth[4].urlToImage
+            img: articlesVectorHealth[4].urlToImage,
+            category: category
         }"
         >
         </app-small-card>
@@ -62,7 +66,8 @@
     <app-small-card *ngFor="let article of articlesVectorHealth.slice(5); let i = index"
     [smallCardInformations] ="{
         title: articlesVectorHealth[i + 5].title, 
-        img: articlesVectorHealth[i + 5].urlToImage
+        img: articlesVectorHealth[i + 5].urlToImage,
+        category: category
     }"
     >
     </app-small-card>

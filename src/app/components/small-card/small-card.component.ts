@@ -17,6 +17,7 @@ export class SmallCardComponent {
 
   @Input() smallCardInformations: SmallCard = {
     img:'',
-    title: ''
+    title: '',
+    category:''
   }
 }

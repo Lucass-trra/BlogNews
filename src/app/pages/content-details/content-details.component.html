@@ -1,5 +1,25 @@
-<article>
-    <img src="" alt="image">
-    <h2>Title</h2>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus laboriosam ratione atque optio, ipsam saepe sapiente quo architecto. Ad iste quia quidem vitae consectetur enim recusandae sed, in quos? Inventore.</p>
-</article>
+<section id="content-details-container">
+    <article>
+        <span>{{noticeDetail.publishedAt}}</span>
+        <figure>
+            <img src="{{noticeDetail.urlToImage}}" alt="{{noticeDetail.title}}">
+        </figure>
+    
+        <h2>{{noticeDetail.title}}</h2>
+        <p>{{noticeDetail.description}}</p>
+    </article>
+
+    <aside>
+        <div id="author">
+            <p>{{noticeDetail.author}}</p>
+        </div>
+
+        <div id="source">   
+            <p>{{noticeDetail.source.name || noticeDetail.source.id}}</p>
+        </div>
+    
+        <div id="reference">
+            <a href="{{noticeDetail.url}}" target="_blank">link to original reference</a>
+        </div>
+    </aside>
+</section>

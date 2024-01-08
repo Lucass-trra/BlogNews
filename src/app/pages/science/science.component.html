@@ -26,7 +26,8 @@
         <app-small-card
         [smallCardInformations] ="{
             title: articlesVectorScience[1].title, 
-            img: articlesVectorScience[1].urlToImage
+            img: articlesVectorScience[1].urlToImage,
+            category: category
         }"
         >
         </app-small-card>
@@ -35,7 +36,8 @@
         <app-small-card 
         [smallCardInformations] ="{
             title: articlesVectorScience[2].title, 
-            img: articlesVectorScience[2].urlToImage
+            img: articlesVectorScience[2].urlToImage,
+            category: category
         }"
         >
         </app-small-card>
@@ -43,7 +45,8 @@
         <app-small-card 
         [smallCardInformations] ="{
             title: articlesVectorScience[3].title, 
-            img: articlesVectorScience[3].urlToImage 
+            img: articlesVectorScience[3].urlToImage,
+            category: category
         }"
         >
         </app-small-card>
@@ -51,7 +54,8 @@
         <app-small-card 
         [smallCardInformations] ="{
             title: articlesVectorScience[4].title, 
-            img: articlesVectorScience[4].urlToImage
+            img: articlesVectorScience[4].urlToImage,
+            category: category
         }"
         >
         </app-small-card>
@@ -62,7 +66,8 @@
     <app-small-card *ngFor="let article of articlesVectorScience.slice(5); let i = index"
     [smallCardInformations] ="{
         title: articlesVectorScience[i + 5].title, 
-        img: articlesVectorScience[i + 5].urlToImage
+        img: articlesVectorScience[i + 5].urlToImage,
+        category: category
     }"
     >
     </app-small-card>
