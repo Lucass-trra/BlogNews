@@ -12,6 +12,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 <hr/>
 
+## Futuras funcionalidades
+- desenvolver um filtro para buscar uma notícia específica em uma página
+- criar modo escuro-claro
+- melhorar o menu de categorias para se tornar mais dinâmico
+- criar a responsividade para larguras de telas maiores, como as de desktop e tvs
+  
+<hr/>
+
 ## Resumo
 Nesse projeto a idea foi de desenvolver uma aplicação angular que consiga ser um blog de notícias funcional, que exiba as notícias mais recentes e populares de cada categoria. Para isso eu usei uma Api de notícias chamada <a href="https://newsapi.org/">newsApi<a>, essa api fornece algumas informações sobre várias notícias para algumas categorias que eles disponibilizam, que são `general`, `business`, `entertainment`, `health`, `science`, `sports`, `technology`.
 
