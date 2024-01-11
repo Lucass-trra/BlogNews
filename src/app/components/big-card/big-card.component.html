@@ -1,6 +1,7 @@
 <article id="big-card-container">
-    <a [routerLink]="['contentDedail',bigCardInformations.title,bigCardInformations.category]">
-        <img srcset="{{bigCardInformations.img}}">
+    <a [routerLink]="['contentDetail',bigCardInformations.title,bigCardInformations.category]">
+        <img [src]="bigCardInformations.img" alt="{{bigCardInformations.title}}">
+        
     </a>
     
     <div id="dateAndCategory-container">
@@ -8,7 +9,7 @@
         <span id="publishedAt">{{bigCardInformations.publishedAt}}</span>
     </div>
 
-    <a [routerLink]="['contentDedail', bigCardInformations.title, bigCardInformations.category]">
+    <a [routerLink]="['contentDetail', bigCardInformations.title, bigCardInformations.category]">
         <h2>{{bigCardInformations.title}}</h2>
     </a>
 

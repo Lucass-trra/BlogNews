@@ -1,6 +1,7 @@
 div#principal-title-container {
     display: flex;
-    justify-content: center;
+    width: 100%;
+    justify-content: center; 
     margin-top: 1rem;
     h1 {
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -10,5 +11,14 @@ div#principal-title-container {
 
     span {
         color: crimson;
+    }
+}
+
+@media screen and (max-width:468px ) {
+
+    div#principal-title-container {
+        h1 {
+            font-size: 3rem;
+        }
     }
 }

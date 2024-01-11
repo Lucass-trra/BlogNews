@@ -32,7 +32,7 @@ export type ApiResponse = {
 }
 
 export type pageUrlGroup = {
-    home: string,
+    general: string,
     business: string,
     entertainment: string,
     health: string,

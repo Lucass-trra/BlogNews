@@ -11,7 +11,7 @@ import { BigCard } from "../../../types";
   standalone: true,
   imports: [RouterModule,CommonModule],
   templateUrl: './big-card.component.html',
-  styleUrl: './big-card.component.css'
+  styleUrls: ['./big-card.component.css', '../../pages/pages.responsive.css']
 })
 export class BigCardComponent {
   @Input() bigCardInformations:BigCard = {

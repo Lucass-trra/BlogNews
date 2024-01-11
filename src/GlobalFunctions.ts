@@ -1,6 +1,6 @@
 import { PagesService } from "./app/services/Pages.service";
-import { apiKey, environment } from "./environments/environment.development";
-import { ApiResponse, Article, pageUrlGroup} from "./types";
+import { apiKey, environment, defaultImageUrl } from "./environments/environment.development";
+import { Article, pageUrlGroup } from "./types";
 
 export abstract class  GlobalFunctions {
     constructor(
@@ -16,7 +16,7 @@ export abstract class  GlobalFunctions {
     const sourceName = article.source.name !== null ? article.source.name : "default Name";
     const title = article.title !== "[Removed]" ? article.title : "unknown title";
     const url = article.url !== null ? article.url : "unknown url";
-    const img = article.urlToImage !== null ? article.urlToImage : "https://www.eclosio.ong/wp-content/uploads/2018/08/default.png";
+    const img = article.urlToImage !== null ? article.urlToImage :defaultImageUrl;
   
     article.author = author;
     article.content = content;
@@ -41,8 +41,8 @@ export abstract class  GlobalFunctions {
   }
 
   protected isEmptyNews(article: Article): boolean {
-    const isDefaultTitle = article.title === "default title...";
-    const isDefaultImage = article.urlToImage === "https://www.eclosio.ong/wp-content/uploads/2018/08/default.png";
+    const isDefaultTitle = article.title === "unknown title";
+    const isDefaultImage = article.urlToImage === defaultImageUrl;
   
     if (isDefaultTitle && isDefaultImage) {
       return false;
@@ -53,7 +53,7 @@ export abstract class  GlobalFunctions {
 
   protected getNoticeUrlByIdAndCategory(category:string,id:string):string {
     const noticeDetailsUrl: pageUrlGroup = {
-      home: `${environment.homeUrl}&apiKey=${apiKey}&q=${id}`,
+      general: `${environment.homeUrl}&apiKey=${apiKey}&q=${id}`,
       business: `${environment.businessUlr}&apiKey=${apiKey}&q=${id}`,
       entertainment: `${environment.entertainmentUrl}&apiKey=${apiKey}&q=${id}`,
       health: `${environment.healthUrl}&apiKey=${apiKey}&q=${id}`,

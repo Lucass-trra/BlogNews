@@ -8,7 +8,7 @@
 
 
 <main class="news">
-    <div id="big-card-separation">
+    <div class="big-card-separation">
         <app-big-card
             [bigCardInformations]="{
                 img: articlesVectorHealth[0].urlToImage ,
@@ -21,7 +21,7 @@
         </app-big-card>
     </div>
 
-    <aside id="small-cards-separation">
+    <aside class="small-cards-separation">
       
         <app-small-card
         [smallCardInformations] ="{
@@ -62,14 +62,17 @@
     </aside>
 </main>
 
-<section id="rest-smallCard-separation">
-    <app-small-card *ngFor="let article of articlesVectorHealth.slice(5); let i = index"
-    [smallCardInformations] ="{
-        title: articlesVectorHealth[i + 5].title, 
-        img: articlesVectorHealth[i + 5].urlToImage,
-        category: category
-    }"
-    >
-    </app-small-card>
+<section class="rest-smallCard-separation">
+
+    <div id="sub-container">
+        <app-small-card *ngFor="let article of articlesVectorHealth.slice(5); let i = index"
+        [smallCardInformations] ="{
+            title: articlesVectorHealth[i + 5].title, 
+            img: articlesVectorHealth[i + 5].urlToImage,
+            category: category
+        }"
+        >
+        </app-small-card>
+    </div>
 </section>
 

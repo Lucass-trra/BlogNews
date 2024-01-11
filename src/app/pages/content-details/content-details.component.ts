@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiResponse, Article } from '../../../types';
 import { PagesService } from '../../services/Pages.service';
 import { GlobalFunctions } from '../../../GlobalFunctions';
+import { noop } from 'rxjs';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { GlobalFunctions } from '../../../GlobalFunctions';
   standalone: true,
   imports: [],
   templateUrl: './content-details.component.html',
-  styleUrl: './content-details.component.css'
+  styleUrls: ['./content-details.component.css', './content.responsive.css']
 })
 export class ContentDetailsComponent extends GlobalFunctions implements OnInit {
   constructor(
@@ -37,27 +38,26 @@ export class ContentDetailsComponent extends GlobalFunctions implements OnInit {
       urlToImage:""
     }
   
-  async getNoticeDetail() {
-    if (this.id && this.category) {
-      const apiResponse:ApiResponse = await this.pageService.getNoticeDetail(this.category, this.id)
+    async getNoticeDetail() {
+      if (this.id && this.category) {
+        const apiResponse:ApiResponse = await this.pageService.getNoticeDetail(this.category, this.id)
 
-      const articleValidated:Article =  this.fillNullNewsInformations(apiResponse.articles[0])
+        const articleValidated:Article =  this.fillNullNewsInformations(apiResponse.articles[0])
 
-      articleValidated.publishedAt = this.formatDateFromNotice(articleValidated.publishedAt)
+        articleValidated.publishedAt = this.formatDateFromNotice(articleValidated.publishedAt)
 
-      this.noticeDetail = articleValidated
-      console.log(articleValidated)
-      
-    }else {
-      throw new Error("the id is undefined or null");
+        this.noticeDetail = articleValidated
+        console.log(articleValidated)
+        
+      } else {
+        throw new Error("the id or category is undefined or null");
+      }
     }
-  }
 
-  
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(value => {
-      this.id = value.get("id")
-      this.category = value.get("category")
+    ngOnInit(): void {
+      this.route.paramMap.subscribe(value => {
+        this.id = value.get("id")
+        this.category = value.get("category")
     })
 
     this.getNoticeDetail()

@@ -15,7 +15,7 @@ import { GlobalFunctions } from '../../../GlobalFunctions';
   standalone: true,
   imports: [ComponentsModule, CommonModule],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['../pages.style.css', '../pages.responsive.css']
 })
 
 export class HomeComponent extends GlobalFunctions implements OnInit {

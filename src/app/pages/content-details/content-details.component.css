@@ -1,10 +1,12 @@
 section#content-details-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+    display: flex;
+    justify-content: space-around;
+    
 }
 
 article {
     display: flex;
+    width: 70%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -29,6 +31,7 @@ article {
 
 aside {
     display: flex;
+    width: 30%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -36,6 +39,9 @@ aside {
 
     
     div {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
         border: 2px solid var(--color_black_default);
         padding: 1rem;
         width: 50%;
@@ -43,15 +49,16 @@ aside {
 
     }
 
-
-    /* div#source {
-
+    span {
+        font-weight: bold;
+        color: var(--color_red_default);
+        font-size: 1.1rem;
+        border-bottom: 2px solid var(--color_red_default);
+        text-align: center;
     }
-    div#author {
-        
-    }
-    div#reference {
-        
-    } */
     
+    a:hover {
+        transition: .4s ease-in-out;
+        color: var(--color_red_default);
+    }
 }

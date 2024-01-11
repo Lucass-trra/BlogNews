@@ -6,15 +6,17 @@
         </figure>
     
         <h2>{{noticeDetail.title}}</h2>
-        <p>{{noticeDetail.description}}</p>
+        <p>{{noticeDetail.content}}</p>
     </article>
 
     <aside>
         <div id="author">
+            <span>author</span>
             <p>{{noticeDetail.author}}</p>
         </div>
 
-        <div id="source">   
+        <div id="source">  
+            <span>source</span> 
             <p>{{noticeDetail.source.name || noticeDetail.source.id}}</p>
         </div>
     

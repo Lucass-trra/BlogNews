@@ -15,7 +15,7 @@ import { GlobalFunctions } from '../../../GlobalFunctions';
   standalone: true,
   imports: [ComponentsModule,CommonModule],
   templateUrl: './science.component.html',
-  styleUrl: './science.component.css'
+  styleUrls: ['../pages.style.css', '../pages.responsive.css']
 })
 export class ScienceComponent extends GlobalFunctions implements OnInit {
   category:string = "science"

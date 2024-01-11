@@ -15,7 +15,7 @@ import { GlobalFunctions } from '../../../GlobalFunctions';
   standalone: true,
   imports: [ComponentsModule,CommonModule],
   templateUrl: './entertainment.component.html',
-  styleUrl: './entertainment.component.css'
+  styleUrls: ['../pages.style.css', '../pages.responsive.css']
 })
 export class EntertainmentComponent extends GlobalFunctions implements OnInit{
   category:string = "entertainment"

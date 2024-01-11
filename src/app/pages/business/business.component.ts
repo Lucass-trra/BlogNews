@@ -15,7 +15,7 @@ import { GlobalFunctions } from '../../../GlobalFunctions';
   standalone: true,
   imports: [ComponentsModule,CommonModule],
   templateUrl: './business.component.html',
-  styleUrl: './business.component.css'
+  styleUrls: ['../pages.style.css', '../pages.responsive.css']
 })
 export class BusinessComponent extends GlobalFunctions implements OnInit {
   category:string = "business"
