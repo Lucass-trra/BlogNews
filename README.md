@@ -40,6 +40,8 @@ dentro desse projeto existe um arquivo que se chama `types.ts` que é o que defi
 
 Outra parte da estrutura á a classe para funções utilitárias `GlobalFunctions.ts` essas funções são usadas em todas as páginas da minha aplicação, por isso, encapsulei a lógica dessas funções em um único local para que elas possam ser reaproveitadas. Toda classe que herde de `GlobalFunctions` poderá usar esses métodos
 
+<img src="./.ideas/estrutura-projeto-blogNews.drawio.svg"/>
+
 <hr/>
 
 ## Como acessar o Projeto via Angular
