@@ -7,7 +7,7 @@
 </header>
 
 
-<main class="news">
+<main class="news" *ngIf="articlesVectorEntertainment.length > 0">
     <div class="big-card-separation">
         <app-big-card
             [bigCardInformations]="{
@@ -62,7 +62,7 @@
     </aside>
 </main>
 
-<section class="rest-smallCard-separation">
+<section class="rest-smallCard-separation" *ngIf="articlesVectorEntertainment.length > 0">
     <div id="sub-container">
         <app-small-card *ngFor="let article of articlesVectorEntertainment.slice(5); let i = index"
         [smallCardInformations] ="{

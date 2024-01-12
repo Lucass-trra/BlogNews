@@ -41,8 +41,6 @@ export class TechnologyComponent extends GlobalFunctions implements OnInit{
         this.articlesVectortechnology.push(articleValidatedHome) 
       }
     }
-
-    // console.log(this.articlesVectorHealth)
   }
   
   ngOnInit(): void {

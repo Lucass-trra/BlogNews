@@ -39,8 +39,6 @@ export class EntertainmentComponent extends GlobalFunctions implements OnInit{
         this.articlesVectorEntertainment.push(articleValidatedHome) 
       }
     }
-
-    // console.log(this.articlesVectorEntertainment)
   }
   
   ngOnInit(): void {

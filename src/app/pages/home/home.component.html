@@ -6,13 +6,12 @@
     <app-title firstTitle="blog" secondTitle="news"></app-title>
 </header>
 
-
-<main class="news">
+<main class="news" *ngIf="articlesVectorHome.length > 0">
     <div class="big-card-separation">
         <app-big-card
             [bigCardInformations]="{
                 img: articlesVectorHome[0].urlToImage,
-                category:category,
+                category: category,
                 publishedAt: articlesVectorHome[0].publishedAt,
                 title: articlesVectorHome[0].title,
                 description: articlesVectorHome[0].description
@@ -22,56 +21,53 @@
     </div>
 
     <aside class="small-cards-separation">
-      
         <app-small-card
-        [smallCardInformations] ="{
-            title: articlesVectorHome[1].title, 
-            img: articlesVectorHome[1].urlToImage,
-            category: category
-        }"
-        >
-        </app-small-card>
-        
-
-        <app-small-card 
-        [smallCardInformations] ="{
-            title: articlesVectorHome[2].title, 
-            img: articlesVectorHome[2].urlToImage,
-            category: category
-        }"
-        >
+            [smallCardInformations]="{
+                img: articlesVectorHome[1].urlToImage,
+                title: articlesVectorHome[1].title,
+                category: category
+            }"
+            >
         </app-small-card>
 
-        <app-small-card 
-        [smallCardInformations] ="{
-            title: articlesVectorHome[3].title, 
-            img: articlesVectorHome[3].urlToImage,
-            category: category
-        }"
-        >
+        <app-small-card
+            [smallCardInformations]="{
+                img: articlesVectorHome[2].urlToImage,
+                title: articlesVectorHome[2].title,
+                category: category
+            }"
+            >
         </app-small-card>
 
-        <app-small-card 
-        [smallCardInformations] ="{
-            title: articlesVectorHome[4].title, 
-            img: articlesVectorHome[4].urlToImage,
-            category: category
-        }"
-        >
+        <app-small-card
+            [smallCardInformations]="{
+                img: articlesVectorHome[3].urlToImage,
+                title: articlesVectorHome[3].title,
+                category: category
+            }"
+            >
+        </app-small-card>
+
+        <app-small-card
+            [smallCardInformations]="{
+                img: articlesVectorHome[4].urlToImage,
+                title: articlesVectorHome[4].title,
+                category: category
+            }"
+            >
         </app-small-card>
     </aside>
 </main>
 
-<section class="rest-smallCard-separation">
+<section class="rest-smallCard-separation" *ngIf="articlesVectorHome.length > 0">
     <div id="sub-container">
         <app-small-card *ngFor="let article of articlesVectorHome.slice(5); let i = index"
-        [smallCardInformations] ="{
-            title: articlesVectorHome[i + 5].title, 
-            img: articlesVectorHome[i + 5].urlToImage,
-            category: category
-        }"
+            [smallCardInformations]="{
+                title: articlesVectorHome[i + 5].title,
+                img: articlesVectorHome[i + 5].urlToImage,
+                category: category
+            }"
         >
         </app-small-card>
     </div>
 </section>
-

@@ -39,8 +39,6 @@ export class ScienceComponent extends GlobalFunctions implements OnInit {
         this.articlesVectorScience.push(articleValidatedHome) 
       }
     }
-
-    // console.log(this.articlesVectorHealth)
   }
   
   ngOnInit(): void {

@@ -39,8 +39,6 @@ export class BusinessComponent extends GlobalFunctions implements OnInit {
         this.articlesVectorBusiness.push(articleValidatedHome) 
       }
     }
-
-    console.log(this.articlesVectorBusiness)
   }
   
   ngOnInit(): void {

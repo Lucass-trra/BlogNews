@@ -40,8 +40,6 @@ export class SportsComponent extends GlobalFunctions implements OnInit{
         this.articlesVectorSports.push(articleValidatedHome) 
       }
     }
-
-    // console.log(this.articlesVectorHealth)
   }
   
   ngOnInit(): void {
