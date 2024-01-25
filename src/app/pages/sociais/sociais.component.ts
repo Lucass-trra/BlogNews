@@ -13,41 +13,43 @@ import { Article, ApiResponse} from "../../../types";
 import { GlobalFunctions } from '../../../GlobalFunctions';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-sociais',
   standalone: true,
-  imports: [ComponentsModule,SharedModule,CommonModule],
-  templateUrl: './home.component.html',
+  imports: [ComponentsModule, SharedModule,CommonModule],
+  templateUrl: './sociais.component.html',
   styleUrls: ['../pages.style.css', '../pages.responsive.css']
 })
 
-export class HomeComponent extends GlobalFunctions implements OnInit {
-  category:string = "geral"
+export class SociaisComponent extends GlobalFunctions implements OnInit {
+  category:string = "sociais"
+  articlesVectorSociais: Article[] = []
 
   showArticlesFiltred: boolean = true;
-  articlesHomeFiltred: Article[] = []
-  
-  articlesVectorHome: Article[] = []
+  articlesSociaisFiltred: Article[] = []
 
   constructor(private pageService:PagesService) {
     super();
   }
 
-  async getHomeNews(qtd:number):Promise<void> {
-    const newsHome:ApiResponse = await this.pageService.getIbgeNews(qtd);
+  async getSociaisNews(qtd:number):Promise<void> {
+    const newsSociais:ApiResponse = await this.pageService.getIbgeNews(qtd);
 
-    for (const articleHome of newsHome.items) {
-      const articleHomeCompleted:Article| null = this.validateArticle(articleHome)
+    const articlesSociaisNews = newsSociais.items.filter((article)=> article.editorias === "sociais")
+
+    for (const articleSociais of articlesSociaisNews) {
       
-      if (articleHomeCompleted) {
-
-        this.articlesVectorHome.push(articleHomeCompleted)
+      const articleSociaisCompleted:Article| null = this.validateArticle(articleSociais)
+      
+      if (articleSociaisCompleted) {
+    
+        this.articlesVectorSociais.push(articleSociaisCompleted)
 
       }else {
         throw new Error("the article is null, please, visit the validateArticle in globalFunction.ts");
       }
     }
   }
-
+  
   filterNews(notice:string) {
     if(notice.length === 0) {
       this.showArticlesFiltred = true
@@ -55,11 +57,11 @@ export class HomeComponent extends GlobalFunctions implements OnInit {
     }else {
       this.showArticlesFiltred = false
 
-      this.articlesHomeFiltred = this.articlesVectorHome.filter((article) => article.titulo.toLowerCase().includes(notice.toLowerCase()))
+      this.articlesSociaisFiltred = this.articlesVectorSociais.filter((article) => article.titulo.toLowerCase().includes(notice.toLowerCase()))
     }
   }
-  
   ngOnInit(): void {
-    this.getHomeNews(20);
+    this.getSociaisNews(100);
   }
+
 }

@@ -1,0 +1,97 @@
+<header>
+    <app-title firstTitle="Geoci" secondTitle="encias"></app-title>
+
+    <label>
+        <input 
+        type="text" 
+        placeholder="search your notice"
+        (input)="filterNews($any($event.target).value) ">
+        <img src="../../../assets/moon.png" alt="lupe image">
+    </label>
+</header>
+
+<main class="news" *ngIf="articlesVectorGeociencias.length > 0 && showArticlesFiltred else GeocienciasArticles">
+    <div class="big-card-separation">
+        <app-big-card
+            [bigCardInformations]="{
+                link: articlesVectorGeociencias[0].link,
+                img: articlesVectorGeociencias[0].imageHome,
+                category: category,
+                publishedAt: articlesVectorGeociencias[0].data_publicacao,
+                title: articlesVectorGeociencias[0].titulo,
+                description: articlesVectorGeociencias[0].indroducao
+            }"
+        >
+        </app-big-card>
+    </div>
+
+    <aside class="small-cards-separation">
+        <app-small-card
+            [smallCardInformations]="{
+               link: articlesVectorGeociencias[1].link,
+                img: articlesVectorGeociencias[1].imageThumb,
+                title: articlesVectorGeociencias[1].titulo,
+                category: category
+            }"
+            >
+        </app-small-card>
+
+        <app-small-card
+            [smallCardInformations]="{
+                link: articlesVectorGeociencias[2].link,
+                img: articlesVectorGeociencias[2].imageThumb,
+                title: articlesVectorGeociencias[2].titulo,
+                category: category
+            }"
+            >
+        </app-small-card>
+
+        <app-small-card
+            [smallCardInformations]="{
+                link: articlesVectorGeociencias[3].link,
+                img: articlesVectorGeociencias[3].imageThumb,
+                title: articlesVectorGeociencias[3].titulo,
+                category: category
+            }"
+            >
+        </app-small-card>
+
+        <app-small-card
+            [smallCardInformations]="{
+                link: articlesVectorGeociencias[4].link,
+                img: articlesVectorGeociencias[4].imageThumb,
+                title: articlesVectorGeociencias[4].titulo,
+                category: category
+            }"
+            >
+        </app-small-card>
+    </aside>
+</main>
+
+<section class="rest-smallCard-separation" *ngIf="articlesVectorGeociencias.length > 0 && showArticlesFiltred">
+    <div id="sub-container">
+        <app-small-card *ngFor="let article of articlesVectorGeociencias.slice(5); let i = index"
+            [smallCardInformations]="{
+                link: articlesVectorGeociencias[i + 5].link,
+                title: articlesVectorGeociencias[i + 5].titulo,
+                img: articlesVectorGeociencias[i + 5].imageThumb,
+                category: category
+            }"
+        >
+        </app-small-card>
+    </div>
+</section>
+
+
+<ng-template #GeocienciasArticles>
+    <section class="articlesFiltred" *ngIf="articlesVectorGeociencias.length > 0">
+        <app-small-card *ngFor="let article of articlesGeocienciaFiltred; let i = index"
+        [smallCardInformations]="{
+            link: articlesGeocienciaFiltred[i].link,
+            title: articlesGeocienciaFiltred[i].titulo,
+            img: articlesGeocienciaFiltred[i].imageThumb,
+            category: category
+        }"
+        ></app-small-card>
+    </section>
+</ng-template>

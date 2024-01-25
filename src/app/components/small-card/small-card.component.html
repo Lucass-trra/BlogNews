@@ -1,7 +1,7 @@
 <article id="small-card-container">
-    <a [routerLink]="['contentDetail', smallCardInformations.title, smallCardInformations.category]">
+    <a href="{{smallCardInformations.link}}" target="_blank">
         <div id="image-container">
-            <img [srcset]="smallCardInformations.img" alt="{{smallCardInformations.title}}">
+            <img srcset="{{imageCompleted}}" alt="{{smallCardInformations.title}}">
         </div>
       
         <h2>{{smallCardInformations.title}}</h2>

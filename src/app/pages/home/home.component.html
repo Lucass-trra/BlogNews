@@ -1,30 +1,35 @@
 <header>
-    <hr id="upper-line"/>
-        <app-menu-category></app-menu-category>
-    <hr id="lower-line"/>
-    
-    <app-title firstTitle="blog" secondTitle="news"></app-title>
+    <app-title firstTitle="Blog" secondTitle="news"></app-title>
+    <label>
+        <input 
+        type="text" 
+        placeholder="search your notice"
+        (input)="filterNews($any($event.target).value) ">
+        <img src="../../../assets/moon.png" alt="lupe image">
+    </label>
 </header>
 
-<main class="news" *ngIf="articlesVectorHome.length > 0">
+<main class="news" *ngIf="articlesVectorHome.length > 0 && showArticlesFiltred else HomeFiltred">
     <div class="big-card-separation">
         <app-big-card
             [bigCardInformations]="{
-                img: articlesVectorHome[0].urlToImage,
+                link: articlesVectorHome[0].link,
+                img: articlesVectorHome[0].imageHome,
                 category: category,
-                publishedAt: articlesVectorHome[0].publishedAt,
-                title: articlesVectorHome[0].title,
-                description: articlesVectorHome[0].description
+                publishedAt: articlesVectorHome[0].data_publicacao,
+                title: articlesVectorHome[0].titulo,
+                description: articlesVectorHome[0].indroducao
             }"
         >
         </app-big-card>
     </div>
 
-    <aside class="small-cards-separation">
+    <aside class="small-cards-separation" >
         <app-small-card
             [smallCardInformations]="{
-                img: articlesVectorHome[1].urlToImage,
-                title: articlesVectorHome[1].title,
+               link: articlesVectorHome[1].link,
+                img: articlesVectorHome[1].imageThumb,
+                title: articlesVectorHome[1].titulo,
                 category: category
             }"
             >
@@ -32,8 +37,9 @@
 
         <app-small-card
             [smallCardInformations]="{
-                img: articlesVectorHome[2].urlToImage,
-                title: articlesVectorHome[2].title,
+                link: articlesVectorHome[2].link,
+                img: articlesVectorHome[2].imageThumb,
+                title: articlesVectorHome[2].titulo,
                 category: category
             }"
             >
@@ -41,8 +47,9 @@
 
         <app-small-card
             [smallCardInformations]="{
-                img: articlesVectorHome[3].urlToImage,
-                title: articlesVectorHome[3].title,
+                link: articlesVectorHome[3].link,
+                img: articlesVectorHome[3].imageThumb,
+                title: articlesVectorHome[3].titulo,
                 category: category
             }"
             >
@@ -50,8 +57,9 @@
 
         <app-small-card
             [smallCardInformations]="{
-                img: articlesVectorHome[4].urlToImage,
-                title: articlesVectorHome[4].title,
+                link: articlesVectorHome[4].link,
+                img: articlesVectorHome[4].imageThumb,
+                title: articlesVectorHome[4].titulo,
                 category: category
             }"
             >
@@ -59,15 +67,29 @@
     </aside>
 </main>
 
-<section class="rest-smallCard-separation" *ngIf="articlesVectorHome.length > 0">
+<section class="rest-smallCard-separation" *ngIf="articlesVectorHome.length > 0 && showArticlesFiltred">
     <div id="sub-container">
         <app-small-card *ngFor="let article of articlesVectorHome.slice(5); let i = index"
             [smallCardInformations]="{
-                title: articlesVectorHome[i + 5].title,
-                img: articlesVectorHome[i + 5].urlToImage,
+                link: articlesVectorHome[i + 5].link,
+                title: articlesVectorHome[i + 5].titulo,
+                img: articlesVectorHome[i + 5].imageThumb,
                 category: category
             }"
         >
         </app-small-card>
     </div>
 </section>
+
+<ng-template #HomeFiltred>
+    <section class="articlesFiltred" *ngIf="articlesHomeFiltred.length > 0">
+        <app-small-card *ngFor="let article of articlesHomeFiltred; let i = index"
+        [smallCardInformations]="{
+            link: articlesHomeFiltred[i].link,
+            title: articlesHomeFiltred[i].titulo,
+            img: articlesHomeFiltred[i].imageThumb,
+            category: category
+        }"
+        ></app-small-card>
+    </section>
+</ng-template>

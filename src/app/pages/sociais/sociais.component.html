@@ -1,0 +1,98 @@
+<header>
+    <app-title firstTitle="Soci" secondTitle="ais"></app-title>
+
+    <label>
+        <input 
+        type="text" 
+        placeholder="search your notice"
+        (input)="filterNews($any($event.target).value) ">
+        <img src="../../../assets/moon.png" alt="lupe image">
+    </label>
+
+</header>
+
+<main class="news" *ngIf="articlesVectorSociais.length > 0 && showArticlesFiltred else SociaisFiltred">
+    <div class="big-card-separation">
+        <app-big-card
+            [bigCardInformations]="{
+                link: articlesVectorSociais[0].link,
+                img: articlesVectorSociais[0].imageHome,
+                category: category,
+                publishedAt: articlesVectorSociais[0].data_publicacao,
+                title: articlesVectorSociais[0].titulo,
+                description: articlesVectorSociais[0].indroducao
+            }"
+        >
+        </app-big-card>
+    </div>
+
+    <aside class="small-cards-separation">
+        <app-small-card
+            [smallCardInformations]="{
+               link: articlesVectorSociais[1].link,
+                img: articlesVectorSociais[1].imageThumb,
+                title: articlesVectorSociais[1].titulo,
+                category: category
+            }"
+            >
+        </app-small-card>
+
+        <app-small-card
+            [smallCardInformations]="{
+                link: articlesVectorSociais[2].link,
+                img: articlesVectorSociais[2].imageThumb,
+                title: articlesVectorSociais[2].titulo,
+                category: category
+            }"
+            >
+        </app-small-card>
+
+        <app-small-card
+            [smallCardInformations]="{
+                link: articlesVectorSociais[3].link,
+                img: articlesVectorSociais[3].imageThumb,
+                title: articlesVectorSociais[3].titulo,
+                category: category
+            }"
+            >
+        </app-small-card>
+
+        <app-small-card
+            [smallCardInformations]="{
+                link: articlesVectorSociais[4].link,
+                img: articlesVectorSociais[4].imageThumb,
+                title: articlesVectorSociais[4].titulo,
+                category: category
+            }"
+            >
+        </app-small-card>
+    </aside>
+</main>
+
+<section class="rest-smallCard-separation" *ngIf="articlesVectorSociais.length > 0 && showArticlesFiltred">
+    <div id="sub-container">
+        <app-small-card *ngFor="let article of articlesVectorSociais.slice(5); let i = index"
+            [smallCardInformations]="{
+                link: articlesVectorSociais[i + 5].link,
+                title: articlesVectorSociais[i + 5].titulo,
+                img: articlesVectorSociais[i + 5].imageThumb,
+                category: category
+            }"
+        >
+        </app-small-card>
+    </div>
+</section>
+
+
+<ng-template #SociaisFiltred>
+    <section class="articlesFiltred" *ngIf="articlesSociaisFiltred.length > 0">
+        <app-small-card *ngFor="let article of articlesSociaisFiltred; let i = index"
+        [smallCardInformations]="{
+            link: articlesSociaisFiltred[i].link,
+            title: articlesSociaisFiltred[i].titulo,
+            img: articlesSociaisFiltred[i].imageThumb,
+            category: category
+        }"
+        ></app-small-card>
+    </section>
+</ng-template>

@@ -1,8 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 
 import { RouterModule } from '@angular/router';  
 import { CommonModule } from '@angular/common';
 
+//environments
+import { environment } from "../../../environments/environment.development";
 //types
 import { SmallCard } from "../../../types";
 
@@ -14,12 +16,24 @@ import { SmallCard } from "../../../types";
   templateUrl: './small-card.component.html',
   styleUrls: ['./small-card.component.css', '../../pages/pages.responsive.css']
 })
-export class SmallCardComponent {
-
+export class SmallCardComponent implements OnInit {
+  
   @Input() smallCardInformations: SmallCard = {
-    img:'',
+    img: '',
     title: '',
-    category:''
+    category: '',
+    link: ''
+  }
+  
+  imageIbgeDomain:string = environment.ibgeImagesDomain
+  imageCompleted:string = ""
+
+  ngOnInit(): void {
+    this.imageCompleted = `${this.imageIbgeDomain}${this.smallCardInformations.img}`
+  }
+
+  ngOnChanges(): void {
+    this.imageCompleted = `${this.imageIbgeDomain}${this.smallCardInformations.img}`
   }
 
 }

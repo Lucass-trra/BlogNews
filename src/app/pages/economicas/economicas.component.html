@@ -1,0 +1,96 @@
+<header>
+    <app-title firstTitle="Econ" secondTitle="omia"></app-title>
+
+    <label>
+        <input 
+        type="text" 
+        placeholder="search your notice"
+        (input)="filterNews($any($event.target).value) ">
+        <img src="../../../assets/moon.png" alt="lupe image">
+    </label>
+</header>
+
+<main class="news" *ngIf="articlesVectorEconomia.length > 0 && showArticlesFiltred else EconomiaFiltred">
+    <div class="big-card-separation">
+        <app-big-card
+            [bigCardInformations]="{
+                link: articlesVectorEconomia[0].link,
+                img: articlesVectorEconomia[0].imageHome,
+                category: category,
+                publishedAt: articlesVectorEconomia[0].data_publicacao,
+                title: articlesVectorEconomia[0].titulo,
+                description: articlesVectorEconomia[0].indroducao
+            }"
+        >
+        </app-big-card>
+    </div>
+
+    <aside class="small-cards-separation">
+        <app-small-card
+            [smallCardInformations]="{
+               link: articlesVectorEconomia[1].link,
+                img: articlesVectorEconomia[1].imageThumb,
+                title: articlesVectorEconomia[1].titulo,
+                category: category
+            }"
+            >
+        </app-small-card>
+
+        <app-small-card
+            [smallCardInformations]="{
+                link: articlesVectorEconomia[2].link,
+                img: articlesVectorEconomia[2].imageThumb,
+                title: articlesVectorEconomia[2].titulo,
+                category: category
+            }"
+            >
+        </app-small-card>
+
+        <app-small-card
+            [smallCardInformations]="{
+                link: articlesVectorEconomia[3].link,
+                img: articlesVectorEconomia[3].imageThumb,
+                title: articlesVectorEconomia[3].titulo,
+                category: category
+            }"
+            >
+        </app-small-card>
+
+        <app-small-card
+            [smallCardInformations]="{
+                link: articlesVectorEconomia[4].link,
+                img: articlesVectorEconomia[4].imageThumb,
+                title: articlesVectorEconomia[4].titulo,
+                category: category
+            }"
+            >
+        </app-small-card>
+    </aside>
+</main>
+
+<section class="rest-smallCard-separation" *ngIf="articlesVectorEconomia.length > 0 && showArticlesFiltred">
+    <div id="sub-container">
+        <app-small-card *ngFor="let article of articlesVectorEconomia.slice(5); let i = index"
+            [smallCardInformations]="{
+                link: articlesVectorEconomia[i + 5].link,
+                title: articlesVectorEconomia[i + 5].titulo,
+                img: articlesVectorEconomia[i + 5].imageThumb,
+                category: category
+            }"
+        >
+        </app-small-card>
+    </div>
+</section>
+
+<ng-template #EconomiaFiltred>
+    <section class="articlesFiltred" *ngIf="articlesEconomiaFiltred.length > 0">
+        <app-small-card *ngFor="let article of articlesEconomiaFiltred; let i = index"
+        [smallCardInformations]="{
+            link: articlesEconomiaFiltred[i].link,
+            title: articlesEconomiaFiltred[i].titulo,
+            img: articlesEconomiaFiltred[i].imageThumb,
+            category: category
+        }"
+        ></app-small-card>
+    </section>
+</ng-template>
