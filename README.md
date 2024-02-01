@@ -21,24 +21,26 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 <hr/>
 
 ## Resumo
-Nesse projeto a idea foi de desenvolver uma aplicação angular que consiga ser um blog de notícias funcional, que exiba as notícias mais recentes e populares de cada categoria. Para isso eu usei uma Api de notícias chamada <a href="https://newsapi.org/">newsApi<a>, essa api fornece algumas informações sobre várias notícias para algumas categorias que eles disponibilizam, que são `general`, `business`, `entertainment`, `health`, `science`, `sports`, `technology`.
+Nesse projeto a idea foi de desenvolver uma aplicação angular que consiga ser um blog de notícias funcional, que exiba as notícias mais recentes e populares de cada categoria. Para isso eu usei a <a href="https://servicodados.ibge.gov.br/api/docs/noticias?versao=3">Api de notícias do IBGE<a>, essa api fornece algumas informações sobre várias notícias para algumas categorias que eles disponibilizam, que são `gerais`, `sociais`, `geociências`, `economia`.
 
-Essa Api e outras que pesquisei não disponibilizam o contéudo completo da notícia por conta de direitos autorais dos criadores da matérias, mas eles disponibilizam o link original da notícia e por conta disso eu so tive acesso a breves descrições e uma pequena parte do conteúdo completo, o que por consequencia deixou a página de detalhes mais simples.
+Essa Api e outras que pesquisei não disponibilizam o contéudo completo da notícia por conta de direitos autorais dos criadores da matérias, mas eles disponibilizam o link original da notícia e por conta disso eu so tive acesso a breves descrições e uma pequena parte do conteúdo completo, o que por consequencia não me permitiu criar uma página de detalhes.
 
 <hr/>
 
 ## Estrutura
 A estrutura de forma geral é simples, o app é composto de 3 principais pilares, que são: `components`,`pages` e `services`. 
 
-Os `components` são as menores estruturas que seráo injetadas nas páginas da aplicação, cada página usa os componentes criados em uma sequência e estilo bem parecidos, porém, com conteúdos diferentes.
+`components` são as menores estruturas que seráo injetadas nas páginas da aplicação, cada página usa os componentes criados em uma sequência e estilo bem parecidos, porém, com conteúdos diferentes.
 
-Cada página se conecta com um método do service diferente, e o `service` é responsável por capturar os dados da Api relativos a categoria ao qual essa página faz parte, por exemplo: a página de business vai se conectar com o  método do service que captura e envia os dados da categoria business, e assim sucessivamente para as outras páginas
+`dos environments` se refere as variáveis que eu constantemente irei usar durante toda a aplicação, como por exemplo: urls da api, chave da api e outros
 
-A parte `dos environments` se refere as variáveis que eu constantemente irei usar durante toda a aplicação, como por exemplo: urls da api, chave da api e outros
+`types.ts` que é o que define os tipos das informações que irão chegar da api e os tipos para alguns objetos específicos, fazer essa tipagem me ajuda a ter mais previsibilidade dos dados que estão chegando, criando uma melhor estabilidade para processar essas informações com menos chances de dar algum erro em tempo de execução, e se tiver, terá em tempo de desenvolvimento
 
-dentro desse projeto existe um arquivo que se chama `types.ts` que é o que define os tipos das informações que irão chegar da api e os tipos para alguns objetos específicos, fazer essa tipagem me ajuda a ter mais previsibilidade dos dados que estão chegando, criando uma melhor estabilidade para processar essas informações com menos chances de dar algum erro em tempo de execução, e se tiver, terá em tempo de desenvolvimento
+`GlobalFunctions.ts` essas funções são usadas em todas as páginas da minha aplicação, por isso, encapsulei a lógica dessas funções em um único local para que elas possam ser reaproveitadas. Toda classe que herde de `GlobalFunctions` poderá usar esses métodos
 
-Outra parte da estrutura á a classe para funções utilitárias `GlobalFunctions.ts` essas funções são usadas em todas as páginas da minha aplicação, por isso, encapsulei a lógica dessas funções em um único local para que elas possam ser reaproveitadas. Toda classe que herde de `GlobalFunctions` poderá usar esses métodos
+`sharedService` esse serivço disponibiliza uma interface para que outros componentes possam acessar outros componentes de maneira mais simples e enviarem dados uns para os outros.
+
+`pageService` esse serviço é responsável por se conectar com a API do IBGE e resgatar as noticias e enviar para todas as páginas que possuem esse serviço injetado
 
 <img src="./.ideas/estrutura-projeto-blogNews.drawio.svg"/>
 
