@@ -1,6 +1,6 @@
 <article id="big-card-container">
     <a href="{{bigCardInformations.link}}" target="_blank">
-        <img src="{{imageCompleted}}" alt="{{bigCardInformations.title}}">
+        <img (error)="onImageError($event)" src="{{imageCompleted}}" alt="{{bigCardInformations.title}}">
         
     </a>
     

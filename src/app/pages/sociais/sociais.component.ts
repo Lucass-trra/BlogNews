@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 //components 
 import { ComponentsModule } from "../../components/components.module";
@@ -7,6 +8,7 @@ import { SharedModule } from "../../shared/shared.module";
 
 //service
 import { PagesService } from '../../services/Pages.service';
+import { SharedAticleService } from '../../services/SharedArticle.service';
 
 //types
 import { Article, ApiResponse} from "../../../types";
@@ -20,17 +22,26 @@ import { GlobalFunctions } from '../../../GlobalFunctions';
   styleUrls: ['../pages.style.css', '../pages.responsive.css']
 })
 
-export class SociaisComponent extends GlobalFunctions implements OnInit {
+export class SociaisComponent extends GlobalFunctions implements OnInit, OnDestroy {
   category:string = "sociais"
   articlesVectorSociais: Article[] = []
 
   showArticlesFiltred: boolean = true;
   articlesSociaisFiltred: Article[] = []
 
-  constructor(private pageService:PagesService) {
+  searchConst:number = 200
+  spliceConst:number = 100
+
+
+  articleSubscription: Subscription = new Subscription;
+
+  constructor(
+    private pageService:PagesService,
+    private sharedArticleService:SharedAticleService
+    ) {
     super();
   }
-
+  
   async getSociaisNews(qtd:number):Promise<void> {
     const newsSociais:ApiResponse = await this.pageService.getIbgeNews(qtd);
 
@@ -43,7 +54,7 @@ export class SociaisComponent extends GlobalFunctions implements OnInit {
       if (articleSociaisCompleted) {
     
         this.articlesVectorSociais.push(articleSociaisCompleted)
-
+        
       }else {
         throw new Error("the article is null, please, visit the validateArticle in globalFunction.ts");
       }
@@ -62,6 +73,22 @@ export class SociaisComponent extends GlobalFunctions implements OnInit {
   }
   ngOnInit(): void {
     this.getSociaisNews(100);
+    
+    this.articleSubscription = this.sharedArticleService.article$.subscribe(newArticles => {
+      for (const article of newArticles) {
+        if (!this.articlesVectorSociais.find(existingArticle => existingArticle.titulo === article.titulo)) {
+          
+          this.articlesVectorSociais.push(article);
+        }
+      }
+    });
+
   }
 
+  ngOnDestroy(): void {
+    this.articleSubscription.unsubscribe()
+    this.sharedArticleService.clearArticles()
+  
+  }
+  
 }

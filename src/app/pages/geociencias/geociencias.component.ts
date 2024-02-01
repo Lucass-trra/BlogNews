@@ -4,9 +4,11 @@ import { CommonModule } from '@angular/common';
 //components 
 import { ComponentsModule } from "../../components/components.module";
 import { SharedModule } from "../../shared/shared.module";
+import { Subscription } from 'rxjs';
 
 //service
 import { PagesService } from '../../services/Pages.service';
+import { SharedAticleService } from '../../services/SharedArticle.service';
 
 //types
 import { Article, ApiResponse} from "../../../types";
@@ -20,17 +22,24 @@ import { GlobalFunctions } from '../../../GlobalFunctions';
   styleUrls: ['../pages.style.css', '../pages.responsive.css']
 })
 
-export class GeocienciasComponent extends GlobalFunctions implements OnInit {
-  category:string = "geociências"
+export class GeocienciasComponent extends GlobalFunctions implements OnInit, OnDestroy {
+  category:string = "geociencias"
   articlesVectorGeociencias: Article[] = []
 
   showArticlesFiltred: boolean = true;
   articlesGeocienciaFiltred: Article[] = []
 
-  constructor(private pageService:PagesService) {
+  searchConst:number = 2000
+  spliceConst:number = 1000
+
+  articleSubscription: Subscription = new Subscription;
+
+  constructor(
+    private pageService:PagesService,
+    private sharedArticleService: SharedAticleService
+    ) {
     super();
   }
-  
   async getGeocienciasNews(qtd:number):Promise<void> {
     const newsGeociencias:ApiResponse = await this.pageService.getIbgeNews(qtd);
 
@@ -60,7 +69,21 @@ export class GeocienciasComponent extends GlobalFunctions implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getGeocienciasNews(500);
+    this.getGeocienciasNews(1000);
+
+    this.articleSubscription = this.sharedArticleService.article$.subscribe(newArticles => {
+      for (const article of newArticles) {
+        if (!this.articlesVectorGeociencias.find(existingArticle => existingArticle.titulo === article.titulo)) {
+
+          this.articlesVectorGeociencias.push(article);
+        }
+      }
+    });
   }
 
+  ngOnDestroy(): void {
+    this.articleSubscription.unsubscribe();
+    this.sharedArticleService.clearArticles()
+  }
+  
 }

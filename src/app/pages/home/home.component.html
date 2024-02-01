@@ -81,6 +81,12 @@
     </div>
 </section>
 
+<app-button-more-articles *ngIf="showArticlesFiltred"
+    [category]="category"
+    [qtdToSearchConst]="searchConst"
+    [qtdToSpliceConst]="spliceConst"
+></app-button-more-articles>
+
 <ng-template #HomeFiltred>
     <section class="articlesFiltred" *ngIf="articlesHomeFiltred.length > 0">
         <app-small-card *ngFor="let article of articlesHomeFiltred; let i = index"

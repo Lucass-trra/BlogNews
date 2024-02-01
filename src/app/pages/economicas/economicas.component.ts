@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 //components 
 import { ComponentsModule } from "../../components/components.module";
@@ -7,6 +8,7 @@ import { SharedModule } from "../../shared/shared.module";
 
 //service
 import { PagesService } from '../../services/Pages.service';
+import { SharedAticleService } from '../../services/SharedArticle.service';
 
 //types
 import { Article, ApiResponse} from "../../../types";
@@ -22,17 +24,24 @@ import { GlobalFunctions } from '../../../GlobalFunctions';
   styleUrls: ['../pages.style.css', '../pages.responsive.css']
 })
 
-export class EconomiaComponent extends GlobalFunctions implements OnInit {
-  category:string = "general"
+export class EconomiaComponent extends GlobalFunctions implements OnInit,OnDestroy {
+  category:string = "economicas"
   articlesVectorEconomia: Article[] = []
+
+  searchConst:number = 200
+  spliceConst:number = 100
 
   showArticlesFiltred: boolean = true;
   articlesEconomiaFiltred: Article[] = []
 
-  constructor(private pageService:PagesService) {
+  articleSubscription: Subscription = new Subscription;
+
+  constructor(
+    private pageService:PagesService,
+    private sharedArticleService: SharedAticleService) {
     super();
   }
-
+  
   async getEconomiaNews(qtd:number):Promise<void> {
     const newsEconomia:ApiResponse = await this.pageService.getIbgeNews(qtd);
 
@@ -53,16 +62,29 @@ export class EconomiaComponent extends GlobalFunctions implements OnInit {
   filterNews(notice:string) {
     if(notice.length === 0) {
       this.showArticlesFiltred = true
-
+      
     }else {
       this.showArticlesFiltred = false
-
+      
       this.articlesEconomiaFiltred = this.articlesVectorEconomia.filter((article) => article.titulo.toLowerCase().includes(notice.toLowerCase()))
     }
   }
   
   ngOnInit(): void {
     this.getEconomiaNews(100);
+    
+    this.articleSubscription = this.sharedArticleService.article$.subscribe(newArticles => {
+      for (const article of newArticles) {
+        if (!this.articlesVectorEconomia.find(existingArticle => existingArticle.titulo === article.titulo)) {
+          
+          this.articlesVectorEconomia.push(article);
+        }
+      }
+    });
   }
-
+  
+  ngOnDestroy(): void {
+    this.articleSubscription.unsubscribe();
+    this.sharedArticleService.clearArticles();
+  }
 }

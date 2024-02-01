@@ -1,0 +1,45 @@
+section.button-container {
+    display: flex;
+    justify-content: center;
+
+    button {
+        padding: 1rem;
+        border-radius: .5rem;
+        color: var(--color_black_default);
+        border: 2px solid var(--color_black_default);
+        margin: auto;
+        width: 20%;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: .5s ease-in-out;
+        
+    }
+    
+    button:hover {
+        background-color:var(--color_red_default);
+        color: var(--color_white_default);
+        
+    }
+
+    button:active {
+        position: relative;
+        top: 1px;
+    }
+}
+
+section.articlesAddedByButton {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+ 
+    div {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        width: 90%;
+    }
+
+
+}

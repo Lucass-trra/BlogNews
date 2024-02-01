@@ -7,22 +7,17 @@ export abstract class  GlobalFunctions {
     {}
 
   protected validateArticle(article:Article):Article | null {
-      //verify if the article has null or undefined informations
+
       let articleValidated:Article = this.fillNullNewsInformations(article)
 
-      //format the date and time from article and assign to (timePublication) and (data_publicacao)
       const articleDateInformations:string[] = this.formatDateFromNotice(articleValidated.data_publicacao)
       articleValidated.data_publicacao = articleDateInformations[0]
       articleValidated.timePublication = articleDateInformations[1]
 
-      //to reduce the title of the article for a shorter length
       articleValidated.titulo = `${this.reducedTitle(articleValidated.titulo)}...`
 
-      const imagesJson:ImageNew = this.converImageStringToJSON(articleValidated.imagens)
-      articleValidated.imageThumb = imagesJson.thumb
-      articleValidated.imageHome = imagesJson.home
+     
 
-      //verify if the title and thumbImage does not exist, if this informatios were true, it will stored and showed
       if (this.isEmptyNews(articleValidated)) {              
         return articleValidated
       }
@@ -38,7 +33,9 @@ export abstract class  GlobalFunctions {
 
     const article_id = article.id !== null ? article.id : 0;
     
-    const images = article.imagens !== null ? article.imagens : defaultImageUrl;
+    const imagesJson:ImageNew = this.converImageStringToJSON(article.imagens)
+    const home = imagesJson.home !== "" ? imagesJson.home : defaultImageUrl;
+    const thumb = imagesJson.thumb !== "" ? imagesJson.thumb : defaultImageUrl;
     
     const indroduction = article.indroducao !== null ? article.indroducao : "unknown indroduction";
     
@@ -53,12 +50,13 @@ export abstract class  GlobalFunctions {
     const type = article.tipo !== null ? article.tipo : "notice without type";
 
     const title = article.titulo !== null ? article.titulo : "no title for this article";
-  
+    
     article.data_publicacao = publishedAt;
     article.destaque = emphasis;
     article.editorias = editorias;
     article.id = article_id;
-    article.imagens = images;
+    article.imageHome = home
+    article.imageThumb = thumb
     article.indroducao = indroduction;
     article.link = url;
     article.produto_id = product_id;
@@ -104,4 +102,7 @@ export abstract class  GlobalFunctions {
     }
   }
 
+
+
 }
+

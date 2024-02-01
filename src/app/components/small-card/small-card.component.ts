@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 //environments
-import { environment } from "../../../environments/environment.development";
+import { defaultImageUrl, environment } from "../../../environments/environment.development";
 //types
 import { SmallCard } from "../../../types";
 
@@ -16,7 +16,7 @@ import { SmallCard } from "../../../types";
   templateUrl: './small-card.component.html',
   styleUrls: ['./small-card.component.css', '../../pages/pages.responsive.css']
 })
-export class SmallCardComponent implements OnInit {
+export class SmallCardComponent implements OnChanges {
   
   @Input() smallCardInformations: SmallCard = {
     img: '',
@@ -28,12 +28,17 @@ export class SmallCardComponent implements OnInit {
   imageIbgeDomain:string = environment.ibgeImagesDomain
   imageCompleted:string = ""
 
-  ngOnInit(): void {
-    this.imageCompleted = `${this.imageIbgeDomain}${this.smallCardInformations.img}`
+  ngOnChanges(): void {
+    if(this.smallCardInformations.img !== defaultImageUrl) {
+      this.imageCompleted = `${this.imageIbgeDomain}${this.smallCardInformations.img}`
+
+    }else {
+      this.imageCompleted = defaultImageUrl
+    }
   }
 
-  ngOnChanges(): void {
-    this.imageCompleted = `${this.imageIbgeDomain}${this.smallCardInformations.img}`
+  onImageError(event:any) {
+    event.target.src = defaultImageUrl;
   }
 
 }

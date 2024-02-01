@@ -1,7 +1,7 @@
 <article id="small-card-container">
     <a href="{{smallCardInformations.link}}" target="_blank">
         <div id="image-container">
-            <img srcset="{{imageCompleted}}" alt="{{smallCardInformations.title}}">
+            <img (error)="onImageError($event)" src="{{imageCompleted}}" alt="{{smallCardInformations.title}}">
         </div>
       
         <h2>{{smallCardInformations.title}}</h2>

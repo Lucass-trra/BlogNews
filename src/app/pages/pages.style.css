@@ -51,7 +51,8 @@ section.rest-smallCard-separation {
     display: flex;
     justify-content: center;
     width: 100%;
-
+    margin-bottom: 3rem;
+    
     div#sub-container {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
